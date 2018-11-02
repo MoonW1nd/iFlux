@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc-watch": "tsc -b -w server/tsconfig.json",
-    "start": "tsc -b server/tsconfig.json"
+    "watch": "tsc -b -w tsconfig.json",
+    "start": "tsc -b tsconfig.json"
   },
   "husky": {
     "hooks": {
