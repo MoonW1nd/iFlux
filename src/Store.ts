@@ -1,6 +1,6 @@
 import Dispatcher, { ICallbackStore, IPayload } from './Dispatcher';
 
-class Store {
+export default class Store {
   public dispatcherId: string;
   public dispatcher: Dispatcher;
   public callbacks: Array<() => void>;
@@ -11,7 +11,7 @@ class Store {
     this.callbacks = [];
   }
 
-  public registerActionsHandlers(actionsHandlers: (payload: IPayload) => {}): void {
+  public registerActions(actionsHandlers: (payload: IPayload) => {}): void {
     const resultFunction = (payload: IPayload) => {
       actionsHandlers(payload);
 
@@ -21,11 +21,23 @@ class Store {
     this.dispatcherId = this.dispatcher.register(resultFunction);
   }
 
-  public unregisterActionsHandlers(): void {
+  public unregisterActions(): void {
     this.dispatcher.unregister(this.dispatcherId);
   }
 
   public emitChange(): void {
     this.callbacks.forEach((callback) => callback());
+  }
+
+  public addListener(callback: () => void) {
+    this.callbacks.push(callback);
+  }
+
+  public removeListener(callback: () => void) {
+    this.callbacks.forEach((registeredCallback, index) => {
+      if (callback === registeredCallback) {
+        this.callbacks.splice(index, 1);
+      }
+    });
   }
 }
