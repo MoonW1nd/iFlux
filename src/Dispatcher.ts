@@ -1,14 +1,14 @@
-interface ICallbackStore {
-  [id: string]: (payload: IPayload) => {};
+export interface ICallbackStore {
+  [id: string]: (payload: IPayload) => void;
 }
 
-interface IPayload {
+export interface IPayload {
   eventName: string;
 }
 
 const idPrefix = 'id_';
 
-class Dispatcher {
+export default class Dispatcher {
   private id: number;
   private callbacks: ICallbackStore;
 
@@ -23,7 +23,7 @@ class Dispatcher {
     });
   }
 
-  public register(cb: (payload: IPayload) => {}): string {
+  public register(cb: (payload: IPayload) => void): string {
     if (typeof cb === 'function') {
       const currentId = `${idPrefix}${this.id}`;
       this.id += 1;
