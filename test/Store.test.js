@@ -86,4 +86,41 @@ describe('Store:', () => {
 
     assert(viewHandlerStub.calledOnce, 'функция обратного вызова не была вызвана');
   });
+
+
+  it('можно получить иммутабильный Store', () => {
+    const dispatcher = new Dispatcher();
+    const initialStore = {
+      isWorking: true,
+      text: 'test',
+    };
+    const store = Store.createStore(initialStore, dispatcher);
+
+    const currentStore = store.getStore();
+    currentStore.isWorking = false;
+
+    expect(store.getStore()).to.deep.include({
+      isWorking: true,
+      text: 'test',
+    });
+  });
+
+
+  it('можно обновить иммутабильный Store', () => {
+    const dispatcher = new Dispatcher();
+    const initialStore = {
+      isWorking: true,
+      text: 'test',
+    };
+    const store = Store.createStore(initialStore, dispatcher);
+
+    store.updateStore({
+      isWorking: false,
+    });
+
+    expect(store.getStore()).to.deep.include({
+      isWorking: false,
+      text: 'test',
+    });
+  });
 });
