@@ -1,12 +1,12 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-const { Store } = require('../build/Store');
+const Store = require('../build/Store');
 const { Dispatcher } = require('../build/Dispatcher');
 
 describe('Store:', () => {
   it('корректно добавляются подписчики', () => {
     const dispatcher = new Dispatcher();
-    const store = new Store(dispatcher);
+    const store = Store.createStore({}, dispatcher);
     const viewRenderHandler = sinon.fake();
 
     store.addListener(viewRenderHandler);
@@ -20,7 +20,7 @@ describe('Store:', () => {
 
   it('корректно удаляются подписчики', () => {
     const dispatcher = new Dispatcher();
-    const store = new Store(dispatcher);
+    const store = Store.createStore({}, dispatcher);
     const viewRenderHandler = sinon.fake();
 
     store.addListener(() => {});
@@ -42,7 +42,7 @@ describe('Store:', () => {
 
   it('корректно отрабатывает оповещение об изменении Store', () => {
     const dispatcher = new Dispatcher();
-    const store = new Store(dispatcher);
+    const store = Store.createStore({}, dispatcher);
     const firstHandlerStub = sinon.fake();
     const secondHandlerStub = sinon.fake();
 
@@ -57,7 +57,7 @@ describe('Store:', () => {
 
   it('обработчики actions Store регистрируются в Dispatcher', () => {
     const dispatcher = new Dispatcher();
-    const store = new Store(dispatcher);
+    const store = Store.createStore({}, dispatcher);
     const actionsHandlers = sinon.fake();
     const action = {
       action: 'ADD_ITEM',
@@ -73,7 +73,7 @@ describe('Store:', () => {
 
   it('Store сообщает подписчикам об изменении при вызове Dispatcher.dispatch', () => {
     const dispatcher = new Dispatcher();
-    const store = new Store(dispatcher);
+    const store = Store.createStore({}, dispatcher);
     const viewHandlerStub = sinon.fake();
     const action = {
       action: 'ADD_ITEM',
