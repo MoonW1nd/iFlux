@@ -1,15 +1,28 @@
 import { Dispatcher, ICallbackStore, IPayload } from './Dispatcher';
 
-const createFrozen = (object: any, extension = {}) => {
-  if (Object(object) !== object) { throw new Error('первый аргумент должен быть объектом'); }
-  if (Object(extension) !== extension) { throw new Error('второй аргумент должен быть объектом'); }
+function _copy(from: any, to: any = {}) {
+  for (const key of Object.keys(from)) {
+    if (Object(from[key]) === from[key] && from[key].constructor === Object) {
+      _copy(from[key], to[key] != null ? to[key] : to[key] = {});
+    } else {
+      to[key] = from[key];
+    }
+  }
+}
 
-  return Object.freeze({ ...object, ...extension });
-};
+function _extend(...objects: any): any {
+    const result = {};
+
+    for (const object of objects) {
+      _copy(object, result);
+    }
+
+    return result;
+}
 
 function createStore(store: any, dispatcher: Dispatcher) {
 
-  let STORE = createFrozen(store);
+  let STORE = _extend(store);
 
   class Store {
     public actionsId: string;
@@ -53,11 +66,11 @@ function createStore(store: any, dispatcher: Dispatcher) {
     }
 
     public getStore() {
-      return STORE;
+      return _extend(STORE);
     }
 
     public updateStore(value: any) {
-      STORE = createFrozen(STORE, value);
+      STORE = _extend(STORE, value);
     }
   }
 

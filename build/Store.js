@@ -1,28 +1,31 @@
 "use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var createFrozen = function (object, extension) {
-    if (extension === void 0) { extension = {}; }
-    if (Object(object) !== object) {
-        throw new Error('первый аргумент должен быть объектом');
+function _copy(from, to) {
+    if (to === void 0) { to = {}; }
+    for (var _i = 0, _a = Object.keys(from); _i < _a.length; _i++) {
+        var key = _a[_i];
+        if (Object(from[key]) === from[key] && from[key].constructor === Object) {
+            _copy(from[key], to[key] != null ? to[key] : to[key] = {});
+        }
+        else {
+            to[key] = from[key];
+        }
     }
-    if (Object(extension) !== extension) {
-        throw new Error('второй аргумент должен быть объектом');
+}
+function _extend() {
+    var objects = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        objects[_i] = arguments[_i];
     }
-    return Object.freeze(__assign({}, object, extension));
-};
+    var result = {};
+    for (var _a = 0, objects_1 = objects; _a < objects_1.length; _a++) {
+        var object = objects_1[_a];
+        _copy(object, result);
+    }
+    return result;
+}
 function createStore(store, dispatcher) {
-    var STORE = createFrozen(store);
+    var STORE = _extend(store);
     var Store = /** @class */ (function () {
         function Store() {
             this.actionsId = '';
@@ -55,10 +58,10 @@ function createStore(store, dispatcher) {
             });
         };
         Store.prototype.getStore = function () {
-            return STORE;
+            return _extend(STORE);
         };
         Store.prototype.updateStore = function (value) {
-            STORE = createFrozen(STORE, value);
+            STORE = _extend(STORE, value);
         };
         return Store;
     }());
