@@ -29,11 +29,18 @@
     "mocha": "^5.2.0",
     "sinon": "^7.1.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
   },
   "lint-staged": {
     "*.ts": [
       "tslint --fix",
+      "git add"
+    ],
+    "*.test.js": [
+      "eslint --fix",
       "git add"
     ]
   }
