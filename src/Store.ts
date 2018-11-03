@@ -1,12 +1,12 @@
 import { Dispatcher, ICallbackStore, IPayload } from './Dispatcher';
 
-export default class Store {
-  public dispatcherId: string;
+export class Store {
+  public actionsId: string;
   public dispatcher: Dispatcher;
   public callbacks: Array<() => void>;
 
   constructor(dispatcher: Dispatcher) {
-    this.dispatcherId = '';
+    this.actionsId = '';
     this.dispatcher = dispatcher;
     this.callbacks = [];
   }
@@ -18,11 +18,11 @@ export default class Store {
       this.emitChange();
     };
 
-    this.dispatcherId = this.dispatcher.register(resultFunction);
+    this.actionsId = this.dispatcher.register(resultFunction);
   }
 
   public unregisterActions(): void {
-    this.dispatcher.unregister(this.dispatcherId);
+    this.dispatcher.unregister(this.actionsId);
   }
 
   public emitChange(): void {

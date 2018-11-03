@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Store = /** @class */ (function () {
     function Store(dispatcher) {
-        this.dispatcherId = '';
+        this.actionsId = '';
         this.dispatcher = dispatcher;
         this.callbacks = [];
     }
@@ -12,10 +12,10 @@ var Store = /** @class */ (function () {
             actionsHandlers(payload);
             _this.emitChange();
         };
-        this.dispatcherId = this.dispatcher.register(resultFunction);
+        this.actionsId = this.dispatcher.register(resultFunction);
     };
     Store.prototype.unregisterActions = function () {
-        this.dispatcher.unregister(this.dispatcherId);
+        this.dispatcher.unregister(this.actionsId);
     };
     Store.prototype.emitChange = function () {
         this.callbacks.forEach(function (callback) { return callback(); });
@@ -33,4 +33,4 @@ var Store = /** @class */ (function () {
     };
     return Store;
 }());
-exports.default = Store;
+exports.Store = Store;
