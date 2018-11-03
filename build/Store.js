@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Store = /** @class */ (function () {
     function Store(dispatcher) {
         this.dispatcherId = '';
@@ -31,4 +33,4 @@ var Store = /** @class */ (function () {
     };
     return Store;
 }());
-export default Store;
+exports.default = Store;

@@ -8,7 +8,7 @@ export interface IPayload {
 
 const idPrefix = 'id_';
 
-export default class Dispatcher {
+export class Dispatcher {
   private id: number;
   private callbacks: ICallbackStore;
 

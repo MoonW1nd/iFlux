@@ -1,4 +1,4 @@
-import Dispatcher, { ICallbackStore, IPayload } from './Dispatcher';
+import { Dispatcher, ICallbackStore, IPayload } from './Dispatcher';
 
 export default class Store {
   public dispatcherId: string;

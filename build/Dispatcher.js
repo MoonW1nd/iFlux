@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var idPrefix = 'id_';
 var Dispatcher = /** @class */ (function () {
     function Dispatcher() {
@@ -31,4 +33,4 @@ var Dispatcher = /** @class */ (function () {
     };
     return Dispatcher;
 }());
-export default Dispatcher;
+exports.Dispatcher = Dispatcher;
