@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --watch",
-    "watch": "tsc -b -w tsconfig.json",
-    "start": "tsc -b tsconfig.json"
+    "watch": "tsc -b -w tsconfig.node.json",
+    "start": "tsc -b tsconfig.node.json",
+    "build": "tsc -b tsconfig.node.json && webpack --mode production"
   },
   "husky": {
     "hooks": {
@@ -23,6 +24,7 @@
     "url": "https://github.com/MoonW1nd/iFlux/issues"
   },
   "devDependencies": {
+    "@types/node": "^10.12.2",
     "chai": "^4.2.0",
     "eslint": "^5.6.1",
     "eslint-config-airbnb-base": "^13.1.0",

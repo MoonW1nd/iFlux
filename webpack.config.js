@@ -15,7 +15,7 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   output: {
-    filename: 'iFLux.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'iFlux.min.js',
+    path: path.resolve(__dirname),
   },
 };
