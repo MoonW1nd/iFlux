@@ -67,5 +67,7 @@ function createStore(store, dispatcher) {
     }());
     return new FluxStore();
 }
-exports.createStore = createStore;
+exports.default = {
+    createStore: createStore,
+};
 exports.Store = { createStore: createStore };

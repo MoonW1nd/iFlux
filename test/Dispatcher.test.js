@@ -1,6 +1,6 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-const { Dispatcher } = require('../build/Dispatcher.js');
+const { Dispatcher } = require('../dist/node/Dispatcher.js');
 
 describe('Dispatcher', () => {
   it('Корректно регистрируются функции обратного вызова Store', () => {

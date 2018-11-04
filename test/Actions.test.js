@@ -1,8 +1,8 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-const { Dispatcher } = require('../build/Dispatcher.js');
-const { Actions } = require('../build/Actions.js');
-const { Store } = require('../build/Store.js');
+const { Dispatcher } = require('../dist/node/Dispatcher.js');
+const { Actions } = require('../dist/node/Actions.js');
+const { Store } = require('../dist/node/Store.js');
 
 describe('Actions', () => {
   it('корректно создаются actionCreators', () => {

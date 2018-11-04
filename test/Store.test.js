@@ -1,7 +1,7 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-const { Store } = require('../build/Store');
-const { Dispatcher } = require('../build/Dispatcher');
+const { Store } = require('../dist/node/Store');
+const { Dispatcher } = require('../dist/node/Dispatcher');
 
 describe('Store:', () => {
   it('корректно добавляются подписчики', () => {

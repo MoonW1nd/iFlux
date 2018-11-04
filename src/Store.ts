@@ -77,7 +77,7 @@ function createStore(store: any, dispatcher: Dispatcher) {
   return new FluxStore();
 }
 
-export {
+export default {
   createStore,
 };
 export const Store = { createStore };
