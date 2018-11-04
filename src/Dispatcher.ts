@@ -3,7 +3,8 @@ export interface ICallbackStore {
 }
 
 export interface IPayload {
-  eventName: string;
+  action: string;
+  data: any;
 }
 
 const idPrefix = 'id_';

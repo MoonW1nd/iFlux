@@ -26,13 +26,13 @@ function _extend() {
 }
 function createStore(store, dispatcher) {
     var STORE = _extend(store);
-    var Store = /** @class */ (function () {
-        function Store() {
+    var FluxStore = /** @class */ (function () {
+        function FluxStore() {
             this.actionsId = '';
             this.dispatcher = dispatcher;
             this.callbacks = [];
         }
-        Store.prototype.registerActions = function (actionsHandlers) {
+        FluxStore.prototype.registerActions = function (actionsHandlers) {
             var _this = this;
             var resultFunction = function (payload) {
                 actionsHandlers(payload);
@@ -40,16 +40,16 @@ function createStore(store, dispatcher) {
             };
             this.actionsId = this.dispatcher.register(resultFunction);
         };
-        Store.prototype.unregisterActions = function () {
+        FluxStore.prototype.unregisterActions = function () {
             this.dispatcher.unregister(this.actionsId);
         };
-        Store.prototype.emitChange = function () {
+        FluxStore.prototype.emitChange = function () {
             this.callbacks.forEach(function (callback) { return callback(); });
         };
-        Store.prototype.addListener = function (callback) {
+        FluxStore.prototype.addListener = function (callback) {
             this.callbacks.push(callback);
         };
-        Store.prototype.removeListener = function (callback) {
+        FluxStore.prototype.removeListener = function (callback) {
             var _this = this;
             this.callbacks.forEach(function (registeredCallback, index) {
                 if (callback === registeredCallback) {
@@ -57,14 +57,15 @@ function createStore(store, dispatcher) {
                 }
             });
         };
-        Store.prototype.getStore = function () {
+        FluxStore.prototype.getStore = function () {
             return _extend(STORE);
         };
-        Store.prototype.updateStore = function (value) {
+        FluxStore.prototype.updateStore = function (value) {
             STORE = _extend(STORE, value);
         };
-        return Store;
+        return FluxStore;
     }());
-    return new Store();
+    return new FluxStore();
 }
 exports.createStore = createStore;
+exports.Store = { createStore: createStore };

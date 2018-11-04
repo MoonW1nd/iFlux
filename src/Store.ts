@@ -24,7 +24,7 @@ function createStore(store: any, dispatcher: Dispatcher) {
 
   let STORE = _extend(store);
 
-  class Store {
+  class FluxStore {
     public actionsId: string;
     public dispatcher: Dispatcher;
     public callbacks: Array<() => void>;
@@ -74,9 +74,10 @@ function createStore(store: any, dispatcher: Dispatcher) {
     }
   }
 
-  return new Store();
+  return new FluxStore();
 }
 
 export {
   createStore,
 };
+export const Store = { createStore };

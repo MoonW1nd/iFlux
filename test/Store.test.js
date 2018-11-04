@@ -1,6 +1,6 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
-const Store = require('../build/Store');
+const { Store } = require('../build/Store');
 const { Dispatcher } = require('../build/Dispatcher');
 
 describe('Store:', () => {
@@ -61,7 +61,7 @@ describe('Store:', () => {
     const actionsHandlers = sinon.fake();
     const action = {
       action: 'ADD_ITEM',
-      item: 'test',
+      data: 'test',
     };
 
     store.registerActions(actionsHandlers);
@@ -77,7 +77,7 @@ describe('Store:', () => {
     const viewHandlerStub = sinon.fake();
     const action = {
       action: 'ADD_ITEM',
-      item: 'test',
+      data: 'test',
     };
 
     store.registerActions(() => {});
