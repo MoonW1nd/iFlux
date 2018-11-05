@@ -16,7 +16,7 @@ export class Actions {
     this.creatorsList = {};
   }
 
-  public create(actionName: string, actionCreatorName: string | null | undefined) {
+  public create(actionName: string, actionCreatorName?: string | null | undefined) {
     if (actionCreatorName == null) { actionCreatorName = convertUpperCaseToCamelCase(actionName); }
     if (actionName in this.list) { throw Error('Имя заданного действия уже существует'); }
     if (actionCreatorName in this.creatorsList) { throw Error('Имя метода создания события уже существует'); }
