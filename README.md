@@ -92,7 +92,7 @@ const initialStore = {
 
 // инициализируем нужные объекты
 const Dispatcher = new iFlux.Dispatcher();
-const Store = Store.createStore(initialStore, Dispatcher);
+const Store = iFlux.Store.createStore(initialStore, Dispatcher);
 const Actions = new iFlux.Actions(Dispatcher);
 
 // создаем действие
