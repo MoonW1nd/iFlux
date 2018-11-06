@@ -1,4 +1,6 @@
 # iFlux
+[Site](https://moonw1nd.github.io/iFlux) | [Test coverage report](https://moonw1nd.github.io/iFlux/coverage/)
+
 Легковесный фреймворк, реализующий Flux-подход.
 
 ![Flux](doc/assets/flux-graph-simple.png)
