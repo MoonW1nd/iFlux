@@ -70,7 +70,7 @@ new Actions(dispatcher)
 
 |Имя|Тип принимаемых параметров|Описание|
 | ------ | :---| :---- |
-| create( actionName, [actionCreatorName] ) | string, [string | null] | Создает действие и функцию actionCreator;|
+| create( actionName, [actionCreatorName] ) | string, [string / null] | Создает действие и функцию actionCreator;|
 > Если actionCreatorName не задан, то actionCreatorName будет равен переведенному actionName в camelCase. ('ADD_ITEM' -> 'addItem');
 
 #### **Свойства:**
