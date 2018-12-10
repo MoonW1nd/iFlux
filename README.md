@@ -1,5 +1,5 @@
-# iFlux
-[Site](https://moonw1nd.github.io/iFlux)
+# [iFlux](https://moonw1nd.github.io/iFlux)
+
 Легковесный фреймворк, реализующий Flux-подход.
 
 ![Flux](doc/assets/flux-graph-simple.png)
