@@ -36,6 +36,7 @@ interface IPayload {
 ```js
 Store.createStore(store, dispatcher)
 ```
+
 |Параметр |Тип принимаемых параметров|Описание|
 | ------ | :---| :---- |
 | store | any | начальное значение хранилище|
@@ -61,6 +62,7 @@ Store.createStore(store, dispatcher)
 ```js
 new Actions(dispatcher)
 ```
+
 |Параметр |Тип принимаемых параметров|Описание|
 | ------ | :---| :---- |
 | dispatcher | Dispatcher | диспетчер в который будут отправляться действия |
@@ -70,6 +72,7 @@ new Actions(dispatcher)
 |Имя|Тип принимаемых параметров|Описание|
 | ------ | :---| :---- |
 | create( actionName, [actionCreatorName] ) | string, [string / null] | Создает действие и функцию actionCreator;|
+
 > Если actionCreatorName не задан, то actionCreatorName будет равен переведенному actionName в camelCase. ('ADD_ITEM' -> 'addItem');
 
 #### **Свойства:**
